@@ -49,27 +49,27 @@ docker stop container-devops
 Configuração do Pipeline Automático (CI/CD)
 Para fazer a esteira do GitHub Actions funcionar integrada ao seu perfil do Docker Hub, siga estes passos de configuração:
 
-1. Criar as Chaves de Acesso no GitHub
+## 1. Criar as Chaves de Acesso no GitHub
 Não escreva suas senhas direto no código. Vá até o seu repositório no GitHub em Settings > Secrets and variables > Actions > New repository secret e cadastre as duas variáveis abaixo:
 
 DOCKERHUB_USERNAME: Insira o seu usuário do Docker Hub.
 
 DOCKERHUB_TOKEN: Insira o Token de Acesso gerado no painel do seu Docker Hub (Account Settings > Security > New Access Token).
 
-2. O Fluxo Automatizado em Ação
+##  2. O Fluxo Automatizado em Ação
 Agora, o processo manual foi eliminado. O ciclo de vida do desenvolvimento resume-se a:
 
 Você altera o código (ex: muda uma mensagem no main.py).
 
 Executa o envio para o Git:
 
-Bash
    git add .
    git commit -m "feat: atualiza mensagem do título"
    git push
+
 O GitHub Actions acorda na nuvem, ativa uma máquina Linux virtual isolada, instala as dependências, roda os testes unitários (pytest) e, recebendo o sinal verde, faz o build automático e o push da imagem para o Docker Hub com duas tags: latest e a Hash única do commit do Git ($COMMIT_SHA) para garantir o versionamento de elite.
 
-🎓 Aprendizados Consolidados
+# Aprendizados Consolidados
 Infraestrutura como Código (IaC): Domínio sobre o ciclo de vida do Docker, reduzindo drasticamente o tamanho das imagens com distribuições slim.
 
 Qualidade de Software Ativa: Implementação de barreiras de qualidade (testes automatizados) que impedem que códigos quebrados cheguem ao ambiente de distribuição.
